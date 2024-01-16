@@ -7,7 +7,7 @@ export const Row = (props) => {
   return (
     <div className="flex flex-row justify-center items-center">
       {colNums.map((item, index) => (
-        <Tile rowId={props.id} key={item} id={index} />
+        <Tile rowId={props.id} key={index} id={index} />
       ))}
     </div>
   );

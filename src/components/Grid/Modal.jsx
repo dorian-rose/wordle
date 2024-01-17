@@ -1,7 +1,7 @@
 import { setGuesses } from "../../store/slice/guesses/guessesSlice";
 import { useDispatch } from "react-redux";
 
-export const Modal = ({ setGuess }) => {
+export const Modal = ({ setGuess, gameState }) => {
   const dispatch = useDispatch();
   return (
     <div
@@ -10,12 +10,11 @@ export const Modal = ({ setGuess }) => {
            grid grid-rows-4"
       role="modal"
     >
-      Game over!
+      Game over! You {gameState}!
       <button
         className="border border-green-500 rounded bg-green-500 p-2 mt-4 text-gray-800 shadow"
         onClick={() => {
-         s
-          dispatch(setGuesses([]));
+          dispatch(setGuesses({ guesses: [], gameState: "playing" }));
           setGuess("");
           //new word logic
         }}

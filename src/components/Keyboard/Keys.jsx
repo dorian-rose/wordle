@@ -1,25 +1,14 @@
-import React from "react";
-
 export const Keys = (props) => {
-  //   if (props.bigKey) {
-  //     return (
-  //       <button
-  //         className="!w-36 h-14 m-1 rounded-md grid place-items-center text-base bg-gray-300 text-black cursor-pointer font-bold"
-  //         // onClick={() => handleClickBigKey()}
-  //       >
-  //         {props.letter}
-  //       </button>
-  //     );
-  //   }
+  const { onClick, letter, bigKey } = props;
 
   return (
     <button
-      //onClick={() => guessTheWord(props.letter)}
+      onClick={(ev) => onClick(ev)}
       className={`${
-        props.bigKey ? "w-20" : "w-16"
+        bigKey ? "w-20" : "w-16 capitalize"
       } h-14 m-1 rounded-md grid place-items-center text-base bg-gray-300 text-black cursor-pointer font-bold`}
     >
-      {props.letter}
+      {letter}
     </button>
   );
 };

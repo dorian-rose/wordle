@@ -1,8 +1,9 @@
 import { setGuesses } from "../../store/slice/guesses/guessesSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Modal = ({ setGuess, gameState }) => {
   const dispatch = useDispatch();
+  const { answer } = useSelector((state) => state.answer);
   return (
     <div
       className="absolute bg-white border border-gray-500 rounded text-center
@@ -11,6 +12,9 @@ export const Modal = ({ setGuess, gameState }) => {
       role="modal"
     >
       Game over! You {gameState}!
+      {gameState === "won"
+        ? `You correctly guessed "${answer}"!!`
+        : `The correct answer was "${answer}".`}
       <button
         className="border border-green-500 rounded bg-green-500 p-2 mt-4 text-gray-800 shadow"
         onClick={() => {

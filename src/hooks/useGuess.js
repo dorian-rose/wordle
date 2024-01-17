@@ -8,6 +8,7 @@ export const useGuess = () => {
     const [guess, setGuess] = useState("");
 
     const addGuessLetter = (letter) => {
+        console.log(`"${letter}"`)
         setGuess((curGuess) => {
             //control that when 5 letters entered (row complete) guess state does not update
             let newGuess;
@@ -18,12 +19,14 @@ export const useGuess = () => {
                 // current letters remain the same 
                 newGuess = curGuess
             }
+            console.log(newGuess)
             //manage back and enter buttons
             switch (letter) {
                 case "Backspace":
                     return newGuess.slice(0, -1);
                 case "Enter":
                     if (newGuess.length === 5) {
+                        console.log("here")
                         //dispatc to validate and save in state, clear current letters
                         dispatch(getGuesses(newGuess, answer));
                         return "";
@@ -33,6 +36,7 @@ export const useGuess = () => {
             }
             return newGuess;
         });
+
     };
 
     const onKeyDown = (e) => {
@@ -48,5 +52,5 @@ export const useGuess = () => {
         };
     }, []);
 
-    return [guess, setGuess, addGuessLetter];
+    return { guess, setGuess, addGuessLetter };
 }

@@ -1,18 +1,10 @@
 import { useState } from "react";
 import { Row } from "./Row";
-import { getGuesses } from "../../store/slice/guesses/thunk";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Modal } from "./Modal";
-import { useGuess } from "../../hooks/useGuess";
 
-export const Grid = () => {
-  //###### handle input, to validate/mark and pass to row ######
-  const dispatch = useDispatch();
-  //get key/letter input
-  const [guess, setGuess, addGuessLetter] = useGuess();
-
-  //retrieve guesses/answer from state
-  const { answer } = useSelector((state) => state.answer);
+export const Grid = ({ guess, setGuess }) => {
+  //retrieve guesses from state
   const { guesses, gameState } = useSelector((state) => state.guesses);
 
   //on input of text

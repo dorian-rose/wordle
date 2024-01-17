@@ -11,6 +11,8 @@ export const Tile = ({ value, classState }) => {
           ? "bg-green-500 text-white border-green-500"
           : classState === "present"
           ? "bg-yellow-500 text-white border-yellow-500"
+          : classState === "miss"
+          ? "bg-gray-400 border-gray-400"
           : "bg-gray-100"
       } flex justify-center items-center h-14 w-16 border-2 rounded-md`}
     >

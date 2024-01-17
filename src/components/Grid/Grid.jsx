@@ -3,29 +3,30 @@ import { Row } from "./Row";
 import { getGuesses } from "../../store/slice/guesses/thunk";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "./Modal";
+import { useGuess } from "../../hooks/useGuess";
 
 export const Grid = () => {
   //###### handle input, to validate/mark and pass to row ######
   const dispatch = useDispatch();
-  //guesses from input in handlechange
-  const [guess, setGuess] = useState("");
+  //get key/letter input
+  const [guess, setGuess, addGuessLetter] = useGuess();
 
   //retrieve guesses/answer from state
   const { answer } = useSelector((state) => state.answer);
-  const { guesses } = useSelector((state) => state.guesses);
+  const { guesses, gameState } = useSelector((state) => state.guesses);
 
   //on input of text
-  const handleChange = (ev) => {
-    const newGuess = ev.target.value;
-    if (newGuess.length === 5) {
-      //dispatch via getGuesses to mark guess, then dispatch to state
-      dispatch(getGuesses(newGuess, answer));
-      //reset the input
-      setGuess("");
-      return;
-    }
-    setGuess(newGuess);
-  };
+  // const handleChange = (ev) => {
+  //   const newGuess = ev.target.value;
+  //   if (newGuess.length === 5) {
+  //     //dispatch via getGuesses to mark guess, then dispatch to state
+  //     dispatch(getGuesses(newGuess, answer));
+  //     //reset the input
+  //     setGuess("");
+  //     return;
+  //   }
+  //   setGuess(newGuess);
+  // };
 
   let rows = [...guesses];
 
@@ -39,27 +40,26 @@ export const Grid = () => {
   const guessesRemaining = 6 - rows.length;
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
-  //### manage game finished ###
-  const gameFinished = guesses.length === 6;
-
   return (
     <>
       <div>
-        <input
+        {/* <input
           type="text"
           id="guess"
           name="guess"
           value={guess}
           onChange={(ev) => handleChange(ev)}
-          disabled={gameFinished}
-        />
+          disabled={gameState !== "playing"}
+        /> */}
         <div className="grid grid-rows-5 gap-4 my-8">
           {rows.map((word, index) => (
             <Row key={index} word={word.guessWord} result={word.result} />
           ))}
         </div>
       </div>
-      {gameFinished && <Modal setGuess={setGuess} />}
+      {gameState !== "playing" && (
+        <Modal setGuess={setGuess} gameState={gameState} />
+      )}
     </>
   );
 };

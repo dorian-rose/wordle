@@ -1,16 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { productsSlice } from './slice/products/productsSlice'
-import { searchSlice } from './slice/search/searchSlice'
-import { faveSlice } from './slice/favourites/faveSlice'
-import { userSlice } from './slice/users/userSlice'
-import { loggedSlice } from './slice/logged/loggedSlice'
+
+import { guessesSlice } from './slice/guesses/guessesSlice'
+
+import { answerSlice } from './slice/answer/answerSlice'
+
+export const GUESS_LENGTH = 5;
 
 export const store = configureStore({
     reducer: {
-        products: productsSlice.reducer,
-        searchProducts: searchSlice.reducer,
-        favourites: faveSlice.reducer,
-        users: userSlice.reducer,
-        logged: loggedSlice.reducer
+        guesses: guessesSlice.reducer,
+        answer: answerSlice.reducer
     },
 })

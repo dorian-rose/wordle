@@ -23,7 +23,7 @@ export const markGuess = (guessWord, answerWord) => {
             }
         }
     }
-
+    console.log(markedLetters)
     return markedLetters;
 }
 

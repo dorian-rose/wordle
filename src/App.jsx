@@ -1,8 +1,11 @@
+
 import "./App.css";
 import { Grid } from "./components/Grid/Grid";
 import { Keyboard } from "./components/Keyboard/Keyboard";
 
+
 function App() {
+  
   return (
     <>
       <div className="mx-auto w-96">

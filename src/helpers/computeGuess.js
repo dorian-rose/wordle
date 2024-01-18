@@ -4,7 +4,7 @@ export const computeGuess = (guessWord, answerWord) => {
     const matchedLetters = []
     const presentLetters = []
     let letterCount = {};
-    console.log(guessWord, answerWord)
+
 
     //first loop - find exact matches 
     for (let i = 0; i < answerWord.length; i++) {
@@ -15,7 +15,7 @@ export const computeGuess = (guessWord, answerWord) => {
             matchedLetters.push(currentLetter);
         }
     }
-    console.log(letterCount)
+
     //second loop - find where present, excluding duplicates of match letters
     for (let i = 0; i < answerWord.length; i++) {
         const currentLetter = guessWord[i];

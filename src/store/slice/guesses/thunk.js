@@ -7,6 +7,7 @@ export const getGuesses = (guessWord, answer) => {
 
     return async (dispatch, getState) => {
         let newState;
+        let newKeyboard;
         let gameState = "playing"
         try {
             const currentState = getState();
@@ -34,12 +35,33 @@ export const getGuesses = (guessWord, answer) => {
                 gameState = "lost"
             }
 
+            //calculate keyboard letter state
+            const currentKeyboard = currentState.guesses.keyboard
+            newKeyboard = { ...currentKeyboard }
+
+            result.forEach((r, index) => {
+                const letterInResult = guessWord[index];
+
+                const currentLetterState = newKeyboard[letterInResult];
+                switch (currentLetterState) {
+                    case "match":
+                        break;
+                    case "present":
+                        if (r === "miss") {
+                            break;
+                        }
+                    default:
+                        newKeyboard[letterInResult] = r;
+                        break;
+                }
+            });
+
         } catch (error) {
             console.log('FAILED to compute guess', error)
             return error
         }
 
-        dispatch(setGuesses({ guesses: newState, gameState }))
+        dispatch(setGuesses({ guesses: newState, gameState, keyboard: newKeyboard }))
     }
 
 

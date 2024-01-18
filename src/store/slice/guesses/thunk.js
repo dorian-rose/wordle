@@ -1,6 +1,6 @@
 import { setGuesses } from "./guessesSlice"
-import { markGuess } from "../../../helpers/markGuess";
-
+// import { markGuess } from "../../../helpers/markGuess";
+import { computeGuess } from "../../../helpers/computeGuess";
 
 
 export const getGuesses = (guessWord, answer) => {
@@ -13,7 +13,7 @@ export const getGuesses = (guessWord, answer) => {
             const currentGuesses = currentState.guesses.guesses
 
             //get guess result 
-            const result = await markGuess(guessWord, answer);
+            const result = await computeGuess(guessWord, answer);
 
             //make new guess result object
             const newGuessResult = {

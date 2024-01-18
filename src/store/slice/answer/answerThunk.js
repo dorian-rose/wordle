@@ -5,7 +5,6 @@ export const getAnswer = (url, method, body) => {
 
     return async (dispatch, getState) => {
 
-
         //reusable fetch function
         let data;
         let options = {};

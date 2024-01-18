@@ -3,7 +3,7 @@ import { markGuess } from "../../../helpers/markGuess";
 
 
 
-export const getGuesses = (guessWord, answerWord) => {
+export const getGuesses = (guessWord, answer) => {
 
     return async (dispatch, getState) => {
         let newState;
@@ -11,10 +11,10 @@ export const getGuesses = (guessWord, answerWord) => {
         try {
             const currentState = getState();
             const currentGuesses = currentState.guesses.guesses
-            console.log(currentGuesses)
+
             //get guess result 
-            const result = await markGuess(guessWord, answerWord);
-            console.log("result", result)
+            const result = await markGuess(guessWord, answer);
+
             //make new guess result object
             const newGuessResult = {
                 guessWord,

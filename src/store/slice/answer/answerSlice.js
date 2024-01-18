@@ -4,13 +4,13 @@ export const answerSlice = createSlice({
 
     name: 'answer',
     initialState: {
-        answer: "hello",
+        answer: "infer",
 
     },
     reducers: {
 
         setAnswer: (state, action) => {
-
+            console.log(action.payload)
             state.answer = action.payload.answer
         }
 

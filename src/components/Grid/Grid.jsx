@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Row } from "./Row";
 import { useSelector } from "react-redux";
 import { Modal } from "./Modal";
@@ -6,19 +5,6 @@ import { Modal } from "./Modal";
 export const Grid = ({ guess, setGuess }) => {
   //retrieve guesses from state
   const { guesses, gameState } = useSelector((state) => state.guesses);
-
-  //on input of text
-  // const handleChange = (ev) => {
-  //   const newGuess = ev.target.value;
-  //   if (newGuess.length === 5) {
-  //     //dispatch via getGuesses to mark guess, then dispatch to state
-  //     dispatch(getGuesses(newGuess, answer));
-  //     //reset the input
-  //     setGuess("");
-  //     return;
-  //   }
-  //   setGuess(newGuess);
-  // };
 
   let rows = [...guesses];
 
@@ -34,21 +20,12 @@ export const Grid = ({ guess, setGuess }) => {
 
   return (
     <>
-      <div>
-        {/* <input
-          type="text"
-          id="guess"
-          name="guess"
-          value={guess}
-          onChange={(ev) => handleChange(ev)}
-          disabled={gameState !== "playing"}
-        /> */}
-        <div className="grid grid-rows-5 gap-4 my-8">
-          {rows.map((word, index) => (
-            <Row key={index} word={word.guessWord} result={word.result} />
-          ))}
-        </div>
+      <div className="grid grid-rows-5 gap-4 my-8">
+        {rows.map((word, index) => (
+          <Row key={index} word={word.guessWord} result={word.result} />
+        ))}
       </div>
+
       {gameState !== "playing" && (
         <Modal setGuess={setGuess} gameState={gameState} />
       )}

@@ -1,9 +1,18 @@
 import { setGuesses } from "../../store/slice/guesses/guessesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getAnswer } from "../../store/slice/answer/answerThunk";
 
 export const Modal = ({ setGuess, gameState }) => {
   const dispatch = useDispatch();
   const { answer } = useSelector((state) => state.answer);
+
+  const handleClick = () => {
+    dispatch(setGuesses({ guesses: [], gameState: "playing" }));
+    setGuess("");
+    const url = import.meta.env.VITE_WORD_URL;
+    dispatch(getAnswer(url));
+  };
+
   return (
     <div
       className="absolute bg-white border border-gray-500 rounded text-center
@@ -17,11 +26,7 @@ export const Modal = ({ setGuess, gameState }) => {
         : `The correct answer was "${answer}".`}
       <button
         className="border border-green-500 rounded bg-green-500 p-2 mt-4 text-gray-800 shadow"
-        onClick={() => {
-          dispatch(setGuesses({ guesses: [], gameState: "playing" }));
-          setGuess("");
-          //new word logic
-        }}
+        onClick={handleClick}
       >
         New Game
       </button>

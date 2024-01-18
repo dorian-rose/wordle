@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tile } from "./Tile";
-import { markGuess } from "../../helpers/markGuess";
-import { useDispatch, useSelector } from "react-redux";
+
 
 export const Row = ({ word = "", result = [] }) => {
   const lettersRemaining = 5 - word.length;

@@ -1,6 +1,7 @@
 import { setGuesses } from "./guessesSlice"
-// import { markGuess } from "../../../helpers/markGuess";
+import { dataFetch } from "../../../helpers/fetch";
 import { computeGuess } from "../../../helpers/computeGuess";
+import { setValid } from "../validate/validSlice";
 
 
 export const getGuesses = (guessWord, answer) => {
@@ -13,6 +14,13 @@ export const getGuesses = (guessWord, answer) => {
             const currentState = getState();
             const currentGuesses = currentState.guesses.guesses
 
+            //checkword exists
+            const url = import.meta.env.VITE_CHECK_URL + guessWord
+            const exists = await dataFetch(url)
+            if (!exists.ok) {
+                dispatch(setValid("Word not in list"))
+                return
+            }
             //get guess result 
             const result = await computeGuess(guessWord, answer);
 

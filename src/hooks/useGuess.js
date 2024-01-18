@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
 import { getGuesses } from "../store/slice/guesses/thunk";
 import { useSelector, useDispatch } from "react-redux";
+import { setValid } from '../store/slice/validate/validSlice';
 
 export const useGuess = () => {
     const dispatch = useDispatch();
-
     //ensure that current state will be sent in addGuessLetter
     const answerRef = useRef();
     const { answer } = useSelector((state) => state.answer);
     answerRef.current = answer;
 
     const [guess, setGuess] = useState("");
+
 
     const addGuessLetter = (letter) => {
 
@@ -35,11 +36,12 @@ export const useGuess = () => {
                         dispatch(getGuesses(newGuess, answerRef.current));
                         return "";
                     } else {
-                        //manage alert here 
+                        dispatch(setValid("Word must have five letters"))
                     }
             }
             return newGuess;
         });
+
 
     };
 
@@ -54,8 +56,6 @@ export const useGuess = () => {
             document.removeEventListener('keydown', onKeyDown);
         };
     }, []);
-
-
 
     return { guess, setGuess, addGuessLetter };
 }

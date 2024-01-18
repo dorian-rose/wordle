@@ -7,7 +7,7 @@ export const Modal = ({ setGuess, gameState }) => {
   const { answer } = useSelector((state) => state.answer);
 
   const handleClick = () => {
-    dispatch(setGuesses({ guesses: [], gameState: "playing" }));
+    dispatch(setGuesses({ guesses: [], gameState: "playing", keyboard: {} }));
     setGuess("");
     const url = import.meta.env.VITE_WORD_URL;
     dispatch(getAnswer(url));
@@ -16,16 +16,18 @@ export const Modal = ({ setGuess, gameState }) => {
   return (
     <div
       className="absolute bg-white border border-gray-500 rounded text-center
-            w-11/12 h-1/2 p-6 left-0 right-0 mx-auto top-1/4
-           grid grid-rows-4"
+            w-11/12 h-48 p-6 left-0 right-0 mx-auto top-1/4 text-xl
+           "
       role="modal"
     >
-      Game over! You {gameState}!
-      {gameState === "won"
-        ? `You correctly guessed "${answer}"!!`
-        : `The correct answer was "${answer}".`}
+      <p className="">
+        {gameState === "won"
+          ? `Game over! You won!! You correctly guessed `
+          : `Game over! You lost 😔 The correct answer was `}
+        <span className="capitalize font-bold">{`"${answer}"!!`}</span>
+      </p>
       <button
-        className="border border-green-500 rounded bg-green-500 p-2 mt-4 text-gray-800 shadow"
+        className="block mx-auto border border-green-500 rounded bg-green-500 p-2 mt-4 text-gray-800 shadow"
         onClick={handleClick}
       >
         New Game

@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-
 export const Tile = ({ value, classState }) => {
-  const [letter, setLetter] = useState("");
-  const [filled, setFilled] = useState(true);
-
+  // classname conditionals can be refactored for readability
   return (
     <div
       className={`${

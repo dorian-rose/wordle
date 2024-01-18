@@ -10,13 +10,15 @@ export const guessesSlice = createSlice({
 
         // favouritesArray: getLocal() || [],
         guesses: [],
-        gameState: "playing"
+        gameState: "playing",
+        keyboard: {}
     },
     reducers: {
         setGuesses: (state, action) => {
 
             state.guesses = action.payload.guesses
             state.gameState = action.payload.gameState
+            state.keyboard = action.payload.keyboard
             // //  search for empty string - save first index of empty string as emptyIndex
             // const emptyIndex = state.guesses.findIndex(guess => guess === "");
 

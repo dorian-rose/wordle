@@ -1,9 +1,11 @@
 
 
 export const markGuess = (guessWord, answerWord) => {
+
+
     const markedLetters = new Array(answerWord.length).fill('miss');
     const matchedIndices = [];
-
+    console.log(guessWord, answerWord)
     // First pass: Check for matches (correct letter in correct position)
     for (let i = 0; i < answerWord.length; i++) {
         if (answerWord[i] === guessWord[i]) {

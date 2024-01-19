@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./App.css";
+
 import { Grid } from "./components/Grid/Grid";
 import { getAnswer } from "./store/slice/answer/answerThunk";
 import { Keyboard } from "./components/Keyboard/Keyboard";
@@ -21,10 +21,10 @@ function App() {
 
   return (
     <>
-      <div className="mx-auto w-96 relative">
+      <div className="mx-auto w-96 relative max-w-72 sm:max-w-screen-md sm:my-8">
         <header className="border-b border-gray-400 py-4">
           <GiveUpButton />
-          <h1 className="text-5xl font-bold text-center uppercase mt-4 ">
+          <h1 className="text-3xl sm:text-5xl font-bold text-center uppercase mt-4 ">
             Wordle
           </h1>
         </header>

@@ -9,7 +9,7 @@ export const GiveUpButton = () => {
   };
   return (
     <button
-      className="flex px-1 py-0 bg-red-400 text-white"
+      className="flex px-1 py-0 bg-red-400 text-white rounded"
       onClick={handleClick}
     >
       Give Up

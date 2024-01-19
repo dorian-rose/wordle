@@ -27,7 +27,7 @@ export const Keyboard = ({ onButtonClick }) => {
 
   const Set2 = () => {
     return (
-      <div className="flex flex-row justify-center m-0">
+      <div className="flex flex-row justify-center sm:my-3 mx-2 sm:mx-4">
         {kbRow2.map((char, index) => (
           <Keys onClick={onClick} key={char} letter={char} />
         ))}
@@ -42,7 +42,12 @@ export const Keyboard = ({ onButtonClick }) => {
         {kbRow3.map((char, index) => (
           <Keys onClick={onClick} key={char} letter={char} />
         ))}
-        <Keys onClick={onClick} bigKey={true} letter={<FaDeleteLeft />} />
+        <Keys
+          onClick={onClick}
+          pd={true}
+          bigKey={true}
+          letter={<FaDeleteLeft />}
+        />
       </div>
     );
   };

@@ -20,8 +20,8 @@ function App() {
 
   return (
     <>
-      <div className="mx-auto w-96 relative max-w-72 sm:max-w-screen-md sm:my-8">
-        <header className="border-b border-gray-400 py-4">
+      <div className="mx-auto w-96 relative  w-screen sm:max-w-screen-md sm:my-8">
+        <header className="border-b border-gray-400 py-4 sm:max-w-md mx-auto">
           <GiveUpButton />
           <h1 className="text-3xl sm:text-5xl font-bold text-center uppercase mt-4 ">
             Wordle

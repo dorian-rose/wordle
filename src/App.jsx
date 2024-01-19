@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import { Grid } from "./components/Grid/Grid";
+import { getAnswer } from "./store/slice/answer/answerThunk";
+import { Keyboard } from "./components/Keyboard/Keyboard";
+import { useGuess } from "./hooks/useGuess";
+import { useDispatch, useSelector } from "react-redux";
+import { GiveUpButton } from "./components/Misc/GiveUpButton";
+import { ErrorMsg } from "./components/Misc/ErrorMsg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+
+  const { valid } = useSelector((state) => state.valid);
+  const { guess, setGuess, addGuessLetter } = useGuess();
+
+  useEffect(() => {
+    const url = import.meta.env.VITE_WORD_URL;
+    dispatch(getAnswer(url));
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="mx-auto w-96 relative  w-screen sm:max-w-screen-md sm:my-8">
+        <header className="border-b border-gray-400 py-4 sm:max-w-md mx-auto">
+          <GiveUpButton />
+          <h1 className="text-3xl sm:text-5xl font-bold text-center uppercase mt-4 ">
+            Wordle
+          </h1>
+        </header>
+        <main>
+          {valid !== "valid" && <ErrorMsg message={valid} />}
+          <Grid guess={guess} setGuess={setGuess} />
+          <Keyboard
+            onButtonClick={(letter) => {
+              addGuessLetter(letter);
+            }}
+          />
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

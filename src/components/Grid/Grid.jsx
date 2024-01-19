@@ -18,8 +18,8 @@ export const Grid = ({ guess, setGuess }) => {
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
   return (
-    <section>
-      <div className="grid grid-rows-5 gap-4 my-6 sm:my-8 mx-auto">
+    <section className="mx-auto max-w-80 sm:max-w-md sm:mx-auto">
+      <div className="grid grid-rows-5 gap-4 my-6 sm:my-10 mx-10 sm:mx-0">
         {rows.map((word, index) => (
           <Row key={index} word={word.guessWord} result={word.result} />
         ))}

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setValid } from "../../store/slice/validate/validSlice";
 
 export const ErrorMsg = ({ message }) => {

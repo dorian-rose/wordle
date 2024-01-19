@@ -5,7 +5,7 @@ import { setValid } from "../validate/validSlice";
 
 
 export const getGuesses = (guessWord, answer) => {
-
+    //logic could be moved from thunk functionality to helper for cleanliness
     return async (dispatch, getState) => {
         let newState;
         let newKeyboard;
@@ -15,27 +15,25 @@ export const getGuesses = (guessWord, answer) => {
             const currentGuesses = currentState.guesses.guesses
 
             //checkword exists
-
             const url = `https://wordlist.onrender.com/${guessWord}` //import.meta.env.VITE_CHECK_URL + guessWord
             const exists = await dataFetch(url)
             if (!exists.ok) {
                 dispatch(setValid("Word not in list"))
                 return
             }
-            //get guess result 
+
+            //compute guess result (matches, present or misses)
             const result = await computeGuess(guessWord, answer);
 
-            //make new guess result object
             const newGuessResult = {
                 guessWord,
                 result,
             };
 
 
-            //new state to be dispatched
             newState = [...currentGuesses, newGuessResult]
 
-            //calculate game state
+            //calculate game state: won, lost or playing (playing as initial state)
             const didWin = result.every((r) => r === "match")
 
             if (didWin) {

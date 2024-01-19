@@ -12,11 +12,9 @@ export const useGuess = () => {
 
     const [guess, setGuess] = useState("");
 
-
     const addGuessLetter = (letter) => {
-
         setGuess((curGuess) => {
-            //control that when 5 letters entered (row complete) guess state does not update
+
             let newGuess;
             if (letter.length === 1 && curGuess.length !== 5) {
                 //add key letter to current letters 

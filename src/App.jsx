@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { Grid } from "./components/Grid/Grid";
 import { getAnswer } from "./store/slice/answer/answerThunk";
 import { Keyboard } from "./components/Keyboard/Keyboard";
@@ -10,9 +9,9 @@ import { ErrorMsg } from "./components/Misc/ErrorMsg";
 
 function App() {
   const dispatch = useDispatch();
-  const { valid } = useSelector((state) => state.valid);
 
-  const { guess, setGuess, addGuessLetter, invalid, setInvalid } = useGuess();
+  const { valid } = useSelector((state) => state.valid);
+  const { guess, setGuess, addGuessLetter } = useGuess();
 
   useEffect(() => {
     const url = import.meta.env.VITE_WORD_URL;

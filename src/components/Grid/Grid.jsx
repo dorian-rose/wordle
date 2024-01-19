@@ -1,6 +1,6 @@
 import { Row } from "./Row";
 import { useSelector } from "react-redux";
-import { Modal } from "./Modal";
+import { Modal } from "../Misc/Modal";
 
 export const Grid = ({ guess, setGuess }) => {
   //retrieve guesses from state
@@ -8,10 +8,9 @@ export const Grid = ({ guess, setGuess }) => {
 
   let rows = [...guesses];
 
-  //concatenate the current guess so that letters can be passed to row and rendered
-  let currentRow = 0;
+  //add guess in progress to rows array so that it can be rendered in Row.js
   if (rows.length < 6) {
-    currentRow = rows.push({ guessWord: guess }) - 1;
+    rows.push({ guessWord: guess });
   }
 
   //make sure there are always six rows, so as to display full grid

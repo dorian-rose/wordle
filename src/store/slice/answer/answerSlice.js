@@ -10,7 +10,7 @@ export const answerSlice = createSlice({
     reducers: {
 
         setAnswer: (state, action) => {
-            console.log(action.payload)
+            
             state.answer = action.payload.answer
         }
 

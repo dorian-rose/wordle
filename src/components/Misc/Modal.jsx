@@ -16,11 +16,10 @@ export const Modal = ({ setGuess, gameState }) => {
   return (
     <div
       className="absolute bg-white border border-gray-500 rounded-xl text-center
-            w-11/12 h-48 p-6 left-0 right-0 mx-auto top-1/4 text-xl
-           "
+            w-11/12 h-48 p-6 left-0 right-0 mx-auto top-1/4 text-xl"
       role="modal"
     >
-      <p className="">
+      <p>
         {gameState === "won"
           ? `Game over! You won!! You correctly guessed `
           : `Game over! You lost 😔 The correct answer was `}

@@ -22,12 +22,11 @@ export const computeGuess = (guessWord, answerWord) => {
         //find number of match/present
         const matchCount = matchedLetters.filter(letter => letter === currentLetter).length
         const presentCount = presentLetters.filter(letter => letter === currentLetter).length
-        //if answer includes letter but no duplicate exists already marked
+        //if answer includes guess letter but it is not exact match
         if (answerWord.includes(currentLetter) && answerWord[i] !== currentLetter) {
             // Check if the count of letter in answer is greater than match/present total
             if (letterCount[currentLetter] > (matchCount + presentCount) || !letterCount[currentLetter]) {
-
-                // Mark as present and push to present list
+                // If so, mark as present and push to present list
                 markedLetters[i] = 'present';
                 presentLetters.push(currentLetter);
             }

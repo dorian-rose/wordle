@@ -55,10 +55,10 @@ export const Keyboard = ({ onButtonClick }) => {
   };
 
   return (
-    <div>
+    <section>
       <Set1 />
       <Set2 />
       <Set3 />
-    </div>
+    </section>
   );
 };

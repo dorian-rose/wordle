@@ -18,7 +18,7 @@ export const Grid = ({ guess, setGuess }) => {
   rows = rows.concat(Array(guessesRemaining).fill(""));
 
   return (
-    <>
+    <section>
       <div className="grid grid-rows-5 gap-4 my-6 sm:my-8 mx-auto">
         {rows.map((word, index) => (
           <Row key={index} word={word.guessWord} result={word.result} />
@@ -28,6 +28,6 @@ export const Grid = ({ guess, setGuess }) => {
       {gameState !== "playing" && (
         <Modal setGuess={setGuess} gameState={gameState} />
       )}
-    </>
+    </section>
   );
 };

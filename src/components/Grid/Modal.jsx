@@ -15,7 +15,7 @@ export const Modal = ({ setGuess, gameState }) => {
 
   return (
     <div
-      className="absolute bg-white border border-gray-500 rounded text-center
+      className="absolute bg-white border border-gray-500 rounded-xl text-center
             w-11/12 h-48 p-6 left-0 right-0 mx-auto top-1/4 text-xl
            "
       role="modal"

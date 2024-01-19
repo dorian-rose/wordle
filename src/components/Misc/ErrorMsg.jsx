@@ -4,14 +4,14 @@ import { setValid } from "../../store/slice/validate/validSlice";
 export const ErrorMsg = ({ message }) => {
   const dispatch = useDispatch();
   return (
-    <div className="w-full bg-white p-4 shadow-lg rounded-lg text-red-500  absolute -translate-x-1/2 left-1/2">
+    <div className="absolute bg-white w-3/4 border border-gray-500 rounded-xl text-center left-1/2 -translate-x-1/2">
       <button
-        className="py-0 px-2  bg-red-500 text-white text-lg"
+        className="mt-4 py-0 px-2  bg-red-500 text-white text-lg rounded mt"
         onClick={() => dispatch(setValid("valid"))}
       >
         X
       </button>
-      <p className="my-4 text-lg">{message}</p>
+      <p className="mt-2 mb-4 text-lg">{message}</p>
     </div>
   );
 };

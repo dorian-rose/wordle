@@ -20,7 +20,7 @@ export const Grid = ({ guess, setGuess }) => {
 
   return (
     <>
-      <div className="grid grid-rows-5 gap-4 my-14">
+      <div className="grid grid-rows-5 gap-4 my-6 sm:my-8 mx-auto">
         {rows.map((word, index) => (
           <Row key={index} word={word.guessWord} result={word.result} />
         ))}

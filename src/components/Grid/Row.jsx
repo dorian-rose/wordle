@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import { Tile } from "./Tile";
 
 export const Row = ({ word = "", result = [] }) => {
+  //ensure array always has length of 5 for renderization 
   const lettersRemaining = 5 - word.length;
   const letters = word.split("").concat(Array(lettersRemaining).fill(""));
 

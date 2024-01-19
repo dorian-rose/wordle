@@ -1,5 +1,5 @@
 export const Tile = ({ value, classState }) => {
-  // classname conditionals can be refactored for readability
+  // classname conditionals should be refactored for readability
   return (
     <div
       className={`${

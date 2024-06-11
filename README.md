@@ -37,6 +37,6 @@ More extensive testing will be implemented in further iterations of this project
 - Redux
 - Jest
 - Random Word Generator API: https://random-word-api.herokuapp.com/
-- Word Validator API: https://wordlist.onrender.com/ + wordToValidate
+- Word Validator API: https://wordlist.onrender.com/ + word ToValidate
 - Styles implemented using TailwindCSS
 - See package.json for futher dependencies used and their versions.

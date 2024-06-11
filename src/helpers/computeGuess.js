@@ -1,5 +1,5 @@
 
-export const computeGuess = (guessWord, answerWord) => {
+export const computeGuess = async (guessWord, answerWord) => {
     const markedLetters = new Array(answerWord.length).fill("miss");
     const matchedLetters = []
     const presentLetters = []

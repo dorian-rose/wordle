@@ -15,7 +15,7 @@ export const getGuesses = (guessWord, answer) => {
             const currentGuesses = currentState.guesses.guesses
 
             //checkword exists
-            const url = `https://wordlist.onrender.com/${guessWord}` //import.meta.env.VITE_CHECK_URL + guessWord
+            const url = import.meta.env.VITE_CHECK_URL + guessWord //`https://wordlist.onrender.com/${guessWord}`
             const exists = await dataFetch(url)
             if (!exists.ok) {
                 dispatch(setValid("Word not in list"))

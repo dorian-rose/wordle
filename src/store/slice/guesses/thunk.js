@@ -1,4 +1,4 @@
-import { setGuesses } from "./guessesSlice"
+import { setGuesses, setLoadingProducts } from "./guessesSlice"
 import { dataFetch } from "../../../helpers/fetch";
 import { computeGuess } from "../../../helpers/computeGuess";
 import { setValid } from "../validate/validSlice";
@@ -15,8 +15,10 @@ export const getGuesses = (guessWord, answer) => {
             const currentGuesses = currentState.guesses.guesses
 
             //checkword exists
+            dispatch(setLoadingProducts(true));
             const url = import.meta.env.VITE_CHECK_URL + guessWord //`https://wordlist.onrender.com/${guessWord}`
             const exists = await dataFetch(url)
+            dispatch(setLoadingProducts(false));
             if (!exists.ok) {
                 dispatch(setValid("Word not in list"))
                 return
@@ -24,7 +26,7 @@ export const getGuesses = (guessWord, answer) => {
 
             //compute guess result (matches, present or misses)
             const result = await computeGuess(guessWord, answer);
-
+            console.log("result", result)
             const newGuessResult = {
                 guessWord,
                 result,
@@ -68,7 +70,7 @@ export const getGuesses = (guessWord, answer) => {
             return error
         }
 
-        dispatch(setGuesses({ guesses: newState, gameState, keyboard: newKeyboard }))
+        await dispatch(setGuesses({ guesses: newState, gameState, keyboard: newKeyboard }))
     }
 
 

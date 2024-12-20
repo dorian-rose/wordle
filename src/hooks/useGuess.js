@@ -32,6 +32,7 @@ export const useGuess = () => {
                     if (newGuess.length === 5) {
                         //dispatc to validate and save in state, clear current letters
                         dispatch(getGuesses(newGuess, answerRef.current));
+
                         return "";
                     } else {
                         dispatch(setValid("Word must have five letters"))

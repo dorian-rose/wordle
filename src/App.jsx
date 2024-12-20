@@ -11,6 +11,7 @@ function App() {
   const dispatch = useDispatch();
 
   const { valid } = useSelector((state) => state.valid);
+  const { isLoading } = useSelector((state) => state.guesses);
   const { guess, setGuess, addGuessLetter } = useGuess();
 
   useEffect(() => {
@@ -29,6 +30,11 @@ function App() {
         </header>
         <main>
           {valid !== "valid" && <ErrorMsg message={valid} />}
+          {isLoading && (
+            <div className="w-[200px] h-[200px] absolute z-[5] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <img src="https://i.gifer.com/ZKZg.gif" alt="loading gif" />
+            </div>
+          )}
           <Grid guess={guess} setGuess={setGuess} />
           <Keyboard
             onButtonClick={(letter) => {

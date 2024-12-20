@@ -4,24 +4,24 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const guessesSlice = createSlice({
 
-
     name: 'guesses',
     initialState: {
-
         guesses: [],
         gameState: "playing",
-        keyboard: {}
+        keyboard: {},
+        isLoading: false
     },
     reducers: {
+        setLoadingProducts: (state, action) => {
+            state.isLoading = action.payload;
+            console.log(state.isLoading)
+        },
         setGuesses: (state, action) => {
-
             state.guesses = action.payload.guesses
             state.gameState = action.payload.gameState
             state.keyboard = action.payload.keyboard
-
         },
     },
-
 })
 
-export const { setGuesses } = guessesSlice.actions
+export const { setGuesses, setLoadingProducts } = guessesSlice.actions

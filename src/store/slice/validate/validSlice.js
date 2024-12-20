@@ -10,7 +10,7 @@ export const validSlice = createSlice({
     reducers: {
 
         setValid: (state, action) => {
-           
+
             state.valid = action.payload
         }
 
